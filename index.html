@@ -406,6 +406,20 @@ body.ready #ld{opacity:0;visibility:hidden}
 @keyframes ang{to{--ang:360deg}}
 .btn{will-change:transform}
 
+
+/* ===== v6: subir ===== */
+#top{position:fixed;right:22px;bottom:22px;width:54px;height:54px;border-radius:50%;border:0;background:var(--nv);color:var(--gl);cursor:pointer;z-index:40;box-shadow:0 14px 30px -12px rgba(8,20,40,.7);opacity:0;transform:translateY(20px) scale(.8);pointer-events:none;transition:opacity .35s,transform .35s cubic-bezier(.2,.8,.2,1),background .25s}
+#top.on{opacity:1;transform:none;pointer-events:auto}
+#top:hover{background:var(--gd);color:#fff}
+#top .rg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+#top .rg circle{fill:none;stroke-width:2.5}
+#top .rg circle:first-child{stroke:rgba(217,184,119,.2)}
+#topRing{stroke:var(--gl);stroke-linecap:round;stroke-dasharray:132;stroke-dashoffset:132}
+#top .ar{position:relative;width:22px;height:22px;transition:transform .25s}
+#top:hover .ar{transform:translateY(-3px)}
+#toTopLogo{display:block;line-height:0}
+@media (max-width:900px){#top{right:16px;bottom:16px;width:50px;height:50px}}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
 </head>
@@ -431,10 +445,11 @@ body.ready #ld{opacity:0;visibility:hidden}
 <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></symbol>
 <symbol id="i-coin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.2c-.5-.9-1.4-1.4-2.5-1.4-1.5 0-2.6.8-2.6 2s1.1 1.7 2.6 2.1 2.6.9 2.6 2.1-1.1 2.1-2.6 2.1c-1.2 0-2.2-.6-2.6-1.5"/><path d="M12 6v1.8M12 16.2V18"/></symbol>
 </svg>
-<header id="hdr"><div class="wrap"><img src="assets/logo_light.png" alt="Élite Inversiones & Finanzas"><nav><a href="#para-quien">Para quién</a><a href="#creditos">Créditos</a><a href="#como">Cómo funciona</a><a href="#faq">Preguntas</a><a href="#cotizador" class="hcta">Cotizar</a></nav></div></header>
+<header id="hdr"><div class="wrap"><a href="#" id="toTopLogo" aria-label="Ir al inicio"><img src="assets/logo_light.png" alt="Élite Inversiones & Finanzas"></a><nav><a href="#para-quien">Para quién</a><a href="#creditos">Créditos</a><a href="#como">Cómo funciona</a><a href="#faq">Preguntas</a><a href="#cotizador" class="hcta">Cotizar</a></nav></div></header>
 
 <div id="ld"><img src="assets/logo_light.png" alt=""><i></i></div>
 <div id="prog"></div>
+<button id="top" aria-label="Subir al inicio"><svg viewBox="0 0 48 48" class="rg"><circle cx="24" cy="24" r="21"/><circle id="topRing" cx="24" cy="24" r="21"/></svg><svg class="ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
 <div class="hero spot">
   <div class="bg" data-px="0.25"></div>
   <canvas id="ptc"></canvas>
@@ -516,8 +531,8 @@ body.ready #ld{opacity:0;visibility:hidden}
     <h2 class="rv d1">Apoyamos a quienes <span class="g">mueven la región.</span></h2>
     <p class="lead rv d2" style="margin-top:14px">Pequeños y medianos negocios que necesitan inventario, equipamiento o crecer; emprendedores con nuevas ideas y proyectos productivos; personas y familias con necesidades específicas. Detrás de cada crédito hay un proyecto que avanza.</p>
     <div class="stats">
-      <div class="st rv"><div class="n"><span class="cnt" data-to="329">0</span></div><p>Créditos otorgados de 2023 a 2026.</p></div>
-      <div class="st rv d1"><div class="n">2023<span>–</span>2026</div><p>Trayectoria otorgando créditos en la región.</p></div>
+      <div class="st rv"><div class="n"><span>+</span><span class="cnt" data-to="300">0</span></div><p>Créditos otorgados a personas, emprendedores y negocios.</p></div>
+      <div class="st rv d1"><div class="n"><span style="color:var(--nv)">Desde</span> 2023<span>.</span></div><p>Otorgando créditos en la región.</p></div>
       <div class="st rv d2"><div class="n">Región<span>.</span></div><p>Desde Xalapa, apoyamos a personas, emprendedores y negocios de toda la región.</p></div>
     </div>
     <div class="reg rv">
@@ -924,6 +939,12 @@ if (FINE && !RM) document.querySelectorAll('.btn').forEach(b => {
   b.addEventListener('mousemove', e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .18}px,${(e.clientY - r.top - r.height / 2) * .3}px)`; });
   b.addEventListener('mouseleave', () => b.style.transform = '');
 });
+
+
+// subir al inicio
+const goTop = e => { e && e.preventDefault(); scrollTo({ top: 0, behavior: RM ? 'auto' : 'smooth' }); };
+$('top').onclick = goTop; $('toTopLogo').onclick = goTop;
+addEventListener('scroll', () => { const k = scrollY / (document.documentElement.scrollHeight - innerHeight); $('top').classList.toggle('on', scrollY > innerHeight * .8); $('topRing').style.strokeDashoffset = (132 * (1 - k)).toFixed(1); }, { passive: true });
 
 // número del cotizador con animación
 let lastM = S.monto;
