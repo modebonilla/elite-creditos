@@ -326,6 +326,53 @@ input[type=range]:active::-webkit-slider-thumb{box-shadow:0 0 0 10px rgba(184,14
 .case .kv b{font-family:Poppins;font-weight:600}
 @media (max-width:900px){.ind,.case{grid-template-columns:1fr}.vs{grid-template-columns:1fr}.vs .c2{transform:none}.soc .stats{grid-template-columns:1fr}}
 
+
+/* ===== v4: región, crecimiento y efectos ===== */
+#prog{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--gd),var(--gl));z-index:50}
+#ptc{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.spot:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(520px circle at var(--mx,-999px) var(--my,-999px),rgba(217,184,119,.09),transparent 60%);z-index:1}
+.btn-g{position:relative;overflow:hidden}
+.btn-g:after{content:"";position:absolute;top:0;bottom:0;width:60px;left:-80px;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:shine 4.5s ease-in-out infinite}
+@keyframes shine{0%,70%{left:-80px}100%{left:120%}}
+.sw{opacity:1!important;transform:none!important}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+.wi{display:inline-block;transform:translateY(105%);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.in .wi{transform:none}
+.tilt{transition:transform .25s ease-out,box-shadow .35s}
+/* región */
+.reg{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:46px;background:#fff;border:1px solid var(--ln);border-radius:28px;padding:34px;overflow:hidden}
+.radar{position:relative;aspect-ratio:1/1;max-width:420px;width:100%;margin:0 auto}
+.radar svg{width:100%;height:100%;overflow:visible}
+.radar .rw{transform-origin:200px 200px;animation:rw 4s ease-out infinite;fill:none;stroke:var(--gd);stroke-width:1.5}
+.radar .rw.b{animation-delay:1.33s}.radar .rw.c{animation-delay:2.66s}
+@keyframes rw{from{transform:scale(.1);opacity:.9}to{transform:scale(1);opacity:0}}
+.radar .sweep{transform-origin:200px 200px;animation:sweep 6s linear infinite}
+@keyframes sweep{to{transform:rotate(360deg)}}
+.radar .pt{opacity:0;animation:pop 6s ease-in-out infinite}
+@keyframes pop{0%,8%{opacity:0;transform:scale(.4)}14%,70%{opacity:1;transform:scale(1)}85%,100%{opacity:0}}
+.radar .pt{transform-box:fill-box;transform-origin:center}
+/* crecimiento */
+#crecimiento{position:relative;overflow:hidden}
+.path{margin-top:50px;position:relative}
+.path svg{width:100%;height:auto;display:block;overflow:visible}
+.path .ln{stroke-dasharray:1400;stroke-dashoffset:1400;transition:stroke-dashoffset 2.6s cubic-bezier(.4,0,.2,1)}
+.path .area{opacity:0;transition:opacity 1.6s 1s}
+.path.in .ln{stroke-dashoffset:0}.path.in .area{opacity:1}
+.path .nd{opacity:0;transform:translateY(14px);transition:.7s cubic-bezier(.2,.8,.2,1)}
+.path.in .nd{opacity:1;transform:none}
+.mil{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:-10px}
+.mil .m{opacity:0;transform:translateY(20px);transition:.8s cubic-bezier(.2,.8,.2,1)}
+.path.in ~ .mil .m{opacity:1;transform:none}
+.mil .m:nth-child(2){transition-delay:.5s}.mil .m:nth-child(3){transition-delay:1s}.mil .m:nth-child(4){transition-delay:1.5s}
+.mil .m .k{font-family:Poppins;font-size:11px;font-weight:600;letter-spacing:.18em;color:var(--gl)}
+.mil .m h4{font-family:Poppins;font-size:18px;font-weight:600;margin-top:6px;color:#fff}
+.mil .m p{font-size:13.5px;color:#A3ADBF;margin-top:4px}
+.uses{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
+.uses span{display:inline-flex;align-items:center;gap:8px;font-family:Poppins;font-size:13px;font-weight:500;padding:10px 16px;border-radius:30px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#DCE1EA;transition:.3s}
+.uses span:hover{background:rgba(217,184,119,.15);border-color:rgba(217,184,119,.4);transform:translateY(-3px)}
+.uses svg{width:16px;height:16px;color:var(--gl)}
+@media (max-width:900px){.reg{grid-template-columns:1fr;padding:22px}.mil{grid-template-columns:1fr 1fr;gap:20px}}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
 </head>
@@ -351,10 +398,12 @@ input[type=range]:active::-webkit-slider-thumb{box-shadow:0 0 0 10px rgba(184,14
 <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></symbol>
 <symbol id="i-coin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.2c-.5-.9-1.4-1.4-2.5-1.4-1.5 0-2.6.8-2.6 2s1.1 1.7 2.6 2.1 2.6.9 2.6 2.1-1.1 2.1-2.6 2.1c-1.2 0-2.2-.6-2.6-1.5"/><path d="M12 6v1.8M12 16.2V18"/></symbol>
 </svg>
-<header id="hdr"><div class="wrap"><img src="assets/logo_light.png" alt="Élite Inversiones & Finanzas"><nav><a href="#individual">Crédito individual</a><a href="#para-quien">Para quién</a><a href="#creditos">Créditos</a><a href="#como">Cómo funciona</a><a href="#faq">Preguntas</a><a href="#cotizador" class="hcta">Cotizar</a></nav></div></header>
+<header id="hdr"><div class="wrap"><img src="assets/logo_light.png" alt="Élite Inversiones & Finanzas"><nav><a href="#para-quien">Para quién</a><a href="#creditos">Créditos</a><a href="#como">Cómo funciona</a><a href="#faq">Preguntas</a><a href="#cotizador" class="hcta">Cotizar</a></nav></div></header>
 
-<div class="hero">
+<div id="prog"></div>
+<div class="hero spot">
   <div class="bg" data-px="0.25"></div>
+  <canvas id="ptc"></canvas>
   <div class="grid"></div>
   <div class="orb a"></div><div class="orb b"></div><div class="orb c"></div>
   <div class="wrap hero-in">
@@ -367,14 +416,14 @@ input[type=range]:active::-webkit-slider-thumb{box-shadow:0 0 0 10px rgba(184,14
     </div>
     <div class="float-wrap">
       <div class="fc f1"><div class="k">TU CRÉDITO</div><div class="amt" id="demoAmt">$15,000</div><div class="trk"><b id="demoBar" style="width:30%"></b><s id="demoThumb" style="left:30%"></s></div><div class="pills" id="demoPills"><span>6 quincenas</span><span class="on">8 quincenas</span><span>10 quincenas</span><span>12 quincenas</span></div></div>
-      <div class="fc f2"><div class="st"><div class="dot"><svg class="ic" style="width:20px;height:20px"><use href="#i-check"/></svg></div><div><h4>Crédito individual</h4><p>Directo contigo, sin grupos</p></div></div></div>
+      <div class="fc f2"><div class="st"><div class="dot"><svg class="ic" style="width:20px;height:20px"><use href="#i-check"/></svg></div><div><h4>Solicitud recibida</h4><p>Revisión individual de tu caso</p></div></div></div>
       <div class="fc f3"><div class="st"><div class="dot" style="background:rgba(217,184,119,.2);color:var(--gl)"><svg class="ic" style="width:20px;height:20px"><use href="#i-chat"/></svg></div><div><h4>Te contactamos</h4><p>Por WhatsApp, con las opciones disponibles</p></div></div></div>
     </div>
   </div>
   <div class="scroll-cue"></div>
 </div>
 
-<div class="marq"><div class="t"><span>Necesidades personales</span><span>Emprendedores</span><span>Compra de inventario</span><span>Crecimiento de negocios</span><span>Crédito individual, sin grupos</span><span>Revisión individual</span><span>Impulso a pymes</span><span>Desde $1,000</span><span>Necesidades personales</span><span>Emprendedores</span><span>Compra de inventario</span><span>Crecimiento de negocios</span><span>Crédito individual, sin grupos</span><span>Revisión individual</span><span>Impulso a pymes</span><span>Desde $1,000</span><span>Necesidades personales</span><span>Emprendedores</span><span>Compra de inventario</span><span>Crecimiento de negocios</span><span>Crédito individual, sin grupos</span><span>Revisión individual</span><span>Impulso a pymes</span><span>Desde $1,000</span><span>Necesidades personales</span><span>Emprendedores</span><span>Compra de inventario</span><span>Crecimiento de negocios</span><span>Crédito individual, sin grupos</span><span>Revisión individual</span><span>Impulso a pymes</span><span>Desde $1,000</span></div></div>
+<div class="marq"><div class="t"><span>Necesidades personales</span><span>Emprendedores</span><span>Compra de inventario</span><span>Crecimiento de negocios</span><span>Revisión individual</span><span>Impulso a pymes</span><span>Crecimiento regional</span><span>Desde $1,000</span><span>Necesidades personales</span><span>Emprendedores</span><span>Compra de inventario</span><span>Crecimiento de negocios</span><span>Revisión individual</span><span>Impulso a pymes</span><span>Crecimiento regional</span><span>Desde $1,000</span><span>Necesidades personales</span><span>Emprendedores</span><span>Compra de inventario</span><span>Crecimiento de negocios</span><span>Revisión individual</span><span>Impulso a pymes</span><span>Crecimiento regional</span><span>Desde $1,000</span><span>Necesidades personales</span><span>Emprendedores</span><span>Compra de inventario</span><span>Crecimiento de negocios</span><span>Revisión individual</span><span>Impulso a pymes</span><span>Crecimiento regional</span><span>Desde $1,000</span></div></div>
 
 <section id="para-quien">
   <div class="wrap">
@@ -388,36 +437,9 @@ input[type=range]:active::-webkit-slider-thumb{box-shadow:0 0 0 10px rgba(184,14
   </div>
 </section>
 
-<section id="individual">
-  <div class="wrap ind">
-    <div>
-      <div class="eb rv">Crédito individual</div>
-      <h2 class="rv d1">Tu crédito es <span class="g">solo tuyo.</span></h2>
-      <p class="lead rv d2" style="margin-top:14px">Aquí no hay grupos ni créditos solidarios. El crédito es directo contigo, de forma individual: tu puntualidad cuenta para ti y no dependes de que otros paguen.</p>
-      <div class="pts">
-        <div class="pt rv"><div class="icb"><svg class="ic" style="width:24px;height:24px"><use href="#i-user"/></svg></div><div><h4>Directo contigo</h4><p>Tu crédito, tus condiciones y tu trato son individuales.</p></div></div>
-        <div class="pt rv d1"><div class="icb"><svg class="ic" style="width:24px;height:24px"><use href="#i-shield"/></svg></div><div><h4>Tu historial depende de ti</h4><p>No respondes por los pagos de nadie más, ni el atraso de otra persona te afecta.</p></div></div>
-        <div class="pt rv d2"><div class="icb"><svg class="ic" style="width:24px;height:24px"><use href="#i-users"/></svg></div><div><h4>Aval solo si lo necesitas</h4><p>En montos menores se solicita un aval cuando no cuentas con una garantía sobre un bien. Aun así, el crédito sigue siendo tuyo.</p></div></div>
-      </div>
-    </div>
-    <div class="vs rv d1">
-      <div class="c c1">
-        <div class="tag">CRÉDITO GRUPAL</div><h3>En grupo</h3>
-        <div class="net"><svg viewBox="0 0 200 110"><g stroke="#C9C4BA" stroke-width="1.5"><line x1="40" y1="30" x2="100" y2="55"/><line x1="160" y1="30" x2="100" y2="55"/><line x1="40" y1="85" x2="100" y2="55"/><line x1="160" y1="85" x2="100" y2="55"/><line x1="40" y1="30" x2="40" y2="85"/><line x1="160" y1="30" x2="160" y2="85"/></g><g fill="#B8B3A8"><circle cx="40" cy="30" r="11"/><circle cx="160" cy="30" r="11"/><circle cx="40" cy="85" r="11"/><circle cx="100" cy="55" r="13"/></g><circle class="bad" cx="160" cy="85" r="11" fill="#C9705F"/></svg></div>
-        <ul><li><svg><use href="#i-dots"/></svg>Respondes por los pagos de los demás.</li><li><svg><use href="#i-dots"/></svg>El atraso de otra persona puede afectarte.</li></ul>
-      </div>
-      <div class="c c2">
-        <div class="tag">CRÉDITO ÉLITE</div><h3>Individual</h3>
-        <div class="solo"><span class="ring"></span><span class="ring r2"></span><div class="me"><svg class="ic" style="width:28px;height:28px"><use href="#i-user"/></svg></div></div>
-        <ul><li><svg><use href="#i-check"/></svg>Directo contigo, sin grupos.</li><li><svg><use href="#i-check"/></svg>Tu puntualidad cuenta solo para ti.</li><li><svg><use href="#i-check"/></svg>Revisión individual de tu caso.</li></ul>
-      </div>
-    </div>
-  </div>
-</section>
-
 <div class="band"><div class="pbg" data-px="0.18"></div><div class="wrap"><div class="eb rv" style="color:var(--gl)">Revisión individual</div><h2 class="rv d1">Cada solicitud se revisa <span style="color:var(--gl)">de forma individual.</span></h2><p class="rv d2">Para conocer el monto, el plazo y la capacidad de pago de cada solicitante, y ofrecerle la opción adecuada.</p></div></div>
 
-<section id="creditos" class="dk">
+<section id="creditos" class="dk spot">
   <div class="orb a" style="left:auto;right:-160px;top:-60px;opacity:.15"></div>
   <div class="wrap" style="position:relative">
     <div class="eb rv">Opciones de crédito</div>
@@ -462,7 +484,26 @@ input[type=range]:active::-webkit-slider-thumb{box-shadow:0 0 0 10px rgba(184,14
     <div class="stats">
       <div class="st rv"><div class="n"><span class="cnt" data-to="329">0</span></div><p>Créditos otorgados de 2023 a 2026.</p></div>
       <div class="st rv d1"><div class="n">2023<span>–</span>2026</div><p>Trayectoria otorgando créditos en la región.</p></div>
-      <div class="st rv d2"><div class="n">Xalapa<span>.</span></div><p>Atención local para personas, emprendedores y negocios.</p></div>
+      <div class="st rv d2"><div class="n">Región<span>.</span></div><p>Desde Xalapa, apoyamos a personas, emprendedores y negocios de toda la región.</p></div>
+    </div>
+    <div class="reg rv">
+      <div class="radar"><svg viewBox="0 0 400 400">
+        <defs><radialGradient id="rg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#B8914A" stop-opacity=".18"/><stop offset="1" stop-color="#B8914A" stop-opacity="0"/></radialGradient>
+        <linearGradient id="sg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#B8914A" stop-opacity="0"/><stop offset="1" stop-color="#B8914A" stop-opacity=".35"/></linearGradient></defs>
+        <circle cx="200" cy="200" r="190" fill="url(#rg)"/>
+        <g fill="none" stroke="#E6DFD0" stroke-width="1"><circle cx="200" cy="200" r="60"/><circle cx="200" cy="200" r="120"/><circle cx="200" cy="200" r="180"/><path d="M200 15V385M15 200H385" stroke-dasharray="3 6"/></g>
+        <path class="sweep" d="M200 200 L380 200 A180 180 0 0 0 327 73 Z" fill="url(#sg)"/>
+        <circle class="rw" cx="200" cy="200" r="180"/><circle class="rw b" cx="200" cy="200" r="180"/><circle class="rw c" cx="200" cy="200" r="180"/>
+        <circle class="pt" cx="167" cy="265" r="6" fill="#B8914A" style="animation-delay:1.94s"/><circle class="pt" cx="347" cy="246" r="4" fill="#B8914A" style="animation-delay:0.29s"/><circle class="pt" cx="159" cy="246" r="6" fill="#B8914A" style="animation-delay:2.19s"/><circle class="pt" cx="214" cy="264" r="5" fill="#B8914A" style="animation-delay:1.29s"/><circle class="pt" cx="260" cy="228" r="5" fill="#B8914A" style="animation-delay:0.42s"/><circle class="pt" cx="314" cy="245" r="4" fill="#B8914A" style="animation-delay:0.35s"/><circle class="pt" cx="115" cy="109" r="4" fill="#B8914A" style="animation-delay:3.78s"/><circle class="pt" cx="109" cy="152" r="4" fill="#B8914A" style="animation-delay:3.46s"/><circle class="pt" cx="351" cy="246" r="5" fill="#B8914A" style="animation-delay:0.28s"/><circle class="pt" cx="95" cy="258" r="6" fill="#B8914A" style="animation-delay:2.51s"/><circle class="pt" cx="145" cy="343" r="4" fill="#B8914A" style="animation-delay:1.85s"/><circle class="pt" cx="299" cy="275" r="4" fill="#B8914A" style="animation-delay:0.62s"/><circle class="pt" cx="116" cy="287" r="4" fill="#B8914A" style="animation-delay:2.23s"/><circle class="pt" cx="81" cy="149" r="5" fill="#B8914A" style="animation-delay:3.39s"/><circle class="pt" cx="155" cy="104" r="5" fill="#B8914A" style="animation-delay:4.08s"/><circle class="pt" cx="38" cy="236" r="5" fill="#B8914A" style="animation-delay:2.79s"/>
+        <circle cx="200" cy="200" r="16" fill="#0E1F38"/><circle cx="200" cy="200" r="6" fill="#D9B877"/>
+        <rect x="150" y="226" width="100" height="26" rx="13" fill="#0E1F38"/><text x="200" y="243" text-anchor="middle" font-family="Poppins" font-size="12" font-weight="600" fill="#fff">Xalapa</text>
+      </svg></div>
+      <div>
+        <div class="eb">Desde Xalapa</div>
+        <h3 style="font-family:Poppins;font-size:clamp(24px,3vw,32px);font-weight:600;line-height:1.15;margin-top:10px">Estamos en Xalapa. <span class="g">Impulsamos a toda la región.</span></h3>
+        <p style="color:var(--gy);margin-top:12px;font-size:16px">Cada crédito apoya a una persona, a un emprendedor o a un negocio que quiere crecer. Así, el impulso a cada proyecto también impulsa a la región.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px"><span class="badge" style="margin:0"><svg class="ic" style="width:14px;height:14px"><use href="#i-user"/></svg>Personas y familias</span><span class="badge" style="margin:0"><svg class="ic" style="width:14px;height:14px"><use href="#i-bulb"/></svg>Emprendedores</span><span class="badge" style="margin:0"><svg class="ic" style="width:14px;height:14px"><use href="#i-store"/></svg>Pymes</span></div>
+      </div>
     </div>
     <div class="case rv">
       <div class="l">
@@ -473,6 +514,31 @@ input[type=range]:active::-webkit-slider-thumb{box-shadow:0 0 0 10px rgba(184,14
       </div>
       <div class="r"><div class="q">Pude arreglar mis papeles de una manera rápida y tener mi título universitario en seguida, esto hizo que en poco tiempo me ascendieran a directora de la escuela en la que comencé a laborar.</div><div style="color:#A3ADBF;font-size:13px;margin-top:14px">— Cliente Élite</div></div>
     </div>
+  </div>
+</section>
+
+<section id="crecimiento" class="dk spot">
+  <div class="orb b" style="left:-120px;right:auto;bottom:auto;top:20%;opacity:.4"></div>
+  <div class="wrap" style="position:relative;z-index:2">
+    <div class="eb rv">Crecimiento</div>
+    <h2 class="rv d1">Te acompañamos en cada etapa <span class="g">de tu proyecto.</span></h2>
+    <p class="lead rv d2" style="margin-top:14px">Desde una necesidad personal hasta la expansión de un negocio: el financiamiento correcto en el momento correcto ayuda a dar el siguiente paso.</p>
+    <div class="path" id="path"><svg viewBox="0 0 1000 220" preserveAspectRatio="none">
+      <defs><linearGradient id="pl" x1="0" x2="1"><stop offset="0" stop-color="#8C6B2E"/><stop offset="1" stop-color="#D9B877"/></linearGradient><linearGradient id="pa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B8914A" stop-opacity=".28"/><stop offset="1" stop-color="#B8914A" stop-opacity="0"/></linearGradient></defs>
+      <path class="area" d="M0 200 C150 195 200 170 250 160 S400 140 500 110 S700 70 750 55 S900 20 1000 8 L1000 220 L0 220Z" fill="url(#pa)"/>
+      <path class="ln" d="M0 200 C150 195 200 170 250 160 S400 140 500 110 S700 70 750 55 S900 20 1000 8" fill="none" stroke="url(#pl)" stroke-width="3.5" stroke-linecap="round"/>
+      <g class="nd" style="transition-delay:.4s"><circle cx="125" cy="193" r="10" fill="#081428" stroke="#D9B877" stroke-width="3"/></g>
+      <g class="nd" style="transition-delay:.9s"><circle cx="375" cy="140" r="10" fill="#081428" stroke="#D9B877" stroke-width="3"/></g>
+      <g class="nd" style="transition-delay:1.4s"><circle cx="625" cy="85" r="10" fill="#081428" stroke="#D9B877" stroke-width="3"/></g>
+      <g class="nd" style="transition-delay:1.9s"><circle cx="875" cy="30" r="12" fill="#D9B877"/></g>
+    </svg></div>
+    <div class="mil">
+      <div class="m"><div class="k">ETAPA 1</div><h4>Una necesidad</h4><p>Personas y familias con necesidades específicas de financiamiento.</p></div>
+      <div class="m"><div class="k">ETAPA 2</div><h4>Una idea</h4><p>Emprendedores con nuevas ideas y proyectos productivos.</p></div>
+      <div class="m"><div class="k">ETAPA 3</div><h4>Un negocio</h4><p>Pymes que necesitan inventario, equipamiento o crecer.</p></div>
+      <div class="m"><div class="k">ETAPA 4</div><h4>La expansión</h4><p>Capital para avanzar a otro nivel.</p></div>
+    </div>
+    <div class="uses rv"><span><svg><use href="#i-box"/></svg>Inventario</span><span><svg><use href="#i-sliders"/></svg>Equipamiento</span><span><svg><use href="#i-bulb"/></svg>Proyectos productivos</span><span><svg><use href="#i-growth"/></svg>Crecimiento de negocios</span><span><svg><use href="#i-doc"/></svg>Estudios y trámites</span><span><svg><use href="#i-user"/></svg>Necesidades personales</span></div>
   </div>
 </section>
 
@@ -619,7 +685,6 @@ input[type=range]:active::-webkit-slider-thumb{box-shadow:0 0 0 10px rgba(184,14
       <details class="rv"><summary>¿Cuánto puedo solicitar?<svg><use href="#i-plus"/></svg></summary><p>Desde <span class="jmin">$1,000</span> hasta <span class="jmax">$500,000</span>. Los créditos de hasta <span class="jlim">$20,000</span> son de menor monto; arriba de esa cantidad se consideran montos mayores.</p></details>
       <details class="rv d1"><summary>¿Qué plazos manejan?<svg><use href="#i-plus"/></svg></summary><p>Para créditos de menor monto, 6, 8, 10 o 12 quincenas con pagos quincenales de capital e intereses. Para montos mayores, el plazo se revisa en cada caso, con opción de pagar intereses durante el plazo y el capital al vencimiento, hasta 12 meses.</p></details>
       <details class="rv"><summary>¿Necesito aval o garantía?<svg><use href="#i-plus"/></svg></summary><p>En créditos de menor monto se solicita un aval cuando no cuentas con una garantía sobre un bien. En montos mayores se revisa la garantía que puedes ofrecer, como la factura de un vehículo o la documentación de un inmueble.</p></details>
-      <details class="rv"><summary>¿Es un crédito grupal?<svg><use href="#i-plus"/></svg></summary><p>No. Todos nuestros créditos son individuales y directos contigo. No formas parte de un grupo ni respondes por los pagos de otras personas.</p></details>
       <details class="rv d1"><summary>¿Necesito tener un negocio para solicitar?<svg><use href="#i-plus"/></svg></summary><p>No. Ofrecemos financiamiento para necesidades personales, emprendedores y negocios.</p></details>
       <details class="rv d1"><summary>¿Puedo abonar a capital antes?<svg><use href="#i-plus"/></svg></summary><p>Sí. Los abonos anticipados a capital son opcionales y pueden reducir los intereses posteriores.</p></details>
       <details class="rv"><summary>¿Qué información me van a pedir?<svg><use href="#i-plus"/></svg></summary><p>Tus datos, el monto y plazo que buscas, el uso que darás al crédito, tus antecedentes crediticios, tus ingresos y gastos aproximados, la garantía o aval y una referencia personal, comercial o bancaria.</p></details>
@@ -750,7 +815,7 @@ document.querySelectorAll('.jmin').forEach(e => e.textContent = fmt(CONFIG.MONTO
 document.querySelectorAll('.jmax').forEach(e => e.textContent = fmt(CONFIG.MONTO_MAX));
 document.querySelectorAll('.jlim').forEach(e => e.textContent = fmt(CONFIG.LIMITE_AVAL));
 const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), { threshold: .15 });
-document.querySelectorAll('.rv,#meter,#how').forEach(e => io.observe(e));
+document.querySelectorAll('.rv,#meter,#how,#path').forEach(e => io.observe(e));
 const cio = new IntersectionObserver(es => es.forEach(x => { if (!x.isIntersecting) return; const el = x.target, to = +el.dataset.to, t0 = performance.now(); (function f(t) { const k = Math.min(1, (t - t0) / 1600); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(f); })(t0); cio.unobserve(el); }), { threshold: .5 });
 document.querySelectorAll('.cnt').forEach(e => cio.observe(e));
 const hdr = $('hdr'), pxs = [...document.querySelectorAll('[data-px]')];
@@ -775,6 +840,56 @@ setInterval(() => {
   $('demoBar').style.width = p + '%'; $('demoThumb').style.left = p + '%';
   [...$('demoPills').children].forEach((s, i) => s.classList.toggle('on', i === q));
 }, 2600);
+
+// ===== v4: efectos =====
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches, FINE = matchMedia('(hover:hover) and (pointer:fine)').matches;
+// barra de progreso
+const prog = $('prog');
+addEventListener('scroll', () => { prog.style.transform = `scaleX(${scrollY / (document.documentElement.scrollHeight - innerHeight)})`; }, { passive: true });
+// títulos palabra por palabra
+document.querySelectorAll('h2.rv').forEach(h => {
+  let n = 0;
+  const walk = node => [...node.childNodes].forEach(c => {
+    if (c.nodeType === 3) {
+      const frag = document.createDocumentFragment();
+      c.textContent.split(/(\s+)/).forEach(t => {
+        if (!t) return;
+        if (/^\s+$/.test(t)) { frag.appendChild(document.createTextNode(t)); return; }
+        const w = document.createElement('span'); w.className = 'w';
+        const i = document.createElement('span'); i.className = 'wi'; i.textContent = t; i.style.transitionDelay = (n++ * 0.06) + 's';
+        w.appendChild(i); frag.appendChild(w);
+      });
+      c.replaceWith(frag);
+    } else if (c.nodeType === 1 && c.tagName !== 'BR') walk(c);
+  });
+  walk(h); h.classList.add('sw');
+});
+// inclinación 3D en tarjetas
+if (FINE && !RM) document.querySelectorAll('.card,.tipo,.soc .st').forEach(c => {
+  c.classList.add('tilt');
+  c.addEventListener('mousemove', e => { const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; c.style.transform = `perspective(900px) rotateX(${(-y * 7).toFixed(2)}deg) rotateY(${(x * 7).toFixed(2)}deg) translateY(-6px)`; });
+  c.addEventListener('mouseleave', () => c.style.transform = '');
+});
+// luz que sigue al cursor
+if (FINE) document.querySelectorAll('.spot').forEach(sec => sec.addEventListener('mousemove', e => { const r = sec.getBoundingClientRect(); sec.style.setProperty('--mx', (e.clientX - r.left) + 'px'); sec.style.setProperty('--my', (e.clientY - r.top) + 'px'); }));
+// partículas doradas en el inicio
+(() => {
+  const cv = $('ptc'); if (!cv || RM) return; const cx = cv.getContext('2d'); let W, H, P = [];
+  const size = () => { const d = devicePixelRatio || 1; W = cv.offsetWidth; H = cv.offsetHeight; cv.width = W * d; cv.height = H * d; cx.setTransform(d, 0, 0, d, 0, 0); };
+  size(); addEventListener('resize', size);
+  const N = innerWidth < 700 ? 28 : 60;
+  for (let i = 0; i < N; i++) P.push({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.8 + .4, v: Math.random() * .35 + .1, a: Math.random() * .5 + .2, s: Math.random() * 6.28 });
+  let vis = true; new IntersectionObserver(e => vis = e[0].isIntersecting).observe(cv);
+  (function loop() {
+    if (vis) {
+      cx.clearRect(0, 0, W, H);
+      P.forEach(p => { p.y -= p.v; p.s += .02; p.x += Math.sin(p.s) * .25; if (p.y < -5) { p.y = H + 5; p.x = Math.random() * W; }
+        cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, 6.28); cx.fillStyle = `rgba(217,184,119,${p.a * (.6 + .4 * Math.sin(p.s * 2))})`; cx.fill(); });
+    }
+    requestAnimationFrame(loop);
+  })();
+})();
+
 // número del cotizador con animación
 let lastM = S.monto;
 mr.addEventListener('input', () => { const b = $('montoTxt'); b.classList.add('bump'); clearTimeout(b._t); b._t = setTimeout(() => b.classList.remove('bump'), 150); });
