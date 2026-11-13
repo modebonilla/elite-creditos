@@ -280,6 +280,52 @@ input[type=range]:active::-webkit-slider-thumb{box-shadow:0 0 0 10px rgba(184,14
   .scroll-cue{display:none}
   .marq .t{font-size:15px}
 }
+
+/* ===== v3: individual + social ===== */
+.ind{display:grid;grid-template-columns:1fr 1.05fr;gap:50px;align-items:center}
+.ind .pts{margin-top:26px}
+.ind .pt{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-top:1px solid #EEE8DC}
+.ind .pt .icb{flex:none}
+.ind .pt h4{font-family:Poppins;font-size:16px;font-weight:600}
+.ind .pt p{font-size:14px;color:var(--gy);margin-top:2px}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:14px;position:relative}
+.vs .c{border-radius:22px;padding:24px 22px;position:relative;overflow:hidden}
+.vs .c1{background:#F1EEE8;color:#7A8195}
+.vs .c2{background:var(--nv);color:#fff;transform:translateY(-18px);box-shadow:0 40px 60px -36px rgba(14,31,56,.7)}
+.vs .tag{font-family:Poppins;font-size:10px;font-weight:600;letter-spacing:.18em}
+.vs .c1 .tag{color:#9AA0AE}.vs .c2 .tag{color:var(--gl)}
+.vs h3{font-family:Poppins;font-size:20px;font-weight:600;margin-top:6px}
+.vs .c1 h3{color:#6B7285}
+.vs ul{list-style:none;margin-top:14px}
+.vs li{display:flex;gap:10px;font-size:13.5px;padding:8px 0;border-top:1px solid rgba(0,0,0,.06);line-height:1.4}
+.vs .c2 li{border-color:rgba(255,255,255,.1);color:#DCE1EA}
+.vs li svg{width:17px;height:17px;flex:none;margin-top:1px}
+.vs .c1 li svg{color:#B04A3C}.vs .c2 li svg{color:var(--gl)}
+.net{height:110px;position:relative;margin-top:16px}
+.net svg{width:100%;height:100%}
+.net .bad{animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{50%{opacity:.25}}
+.solo{height:110px;display:flex;align-items:center;justify-content:center;margin-top:16px;position:relative}
+.solo .me{width:62px;height:62px;border-radius:50%;background:var(--gd);display:flex;align-items:center;justify-content:center;color:#fff;position:relative;z-index:1}
+.solo .ring{position:absolute;width:62px;height:62px;border-radius:50%;border:2px solid var(--gl);animation:ring 2.4s ease-out infinite}
+.solo .ring.r2{animation-delay:1.2s}
+@keyframes ring{from{transform:scale(1);opacity:.9}to{transform:scale(2);opacity:0}}
+.soc{position:relative;overflow:hidden;background:var(--cl)}
+.soc .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.soc .st{background:#fff;border:1px solid var(--ln);border-radius:22px;padding:26px}
+.soc .st .n{font-family:Poppins;font-weight:600;font-size:44px;line-height:1;color:var(--nv);font-variant-numeric:tabular-nums}
+.soc .st .n span{color:var(--gd)}
+.soc .st p{font-size:14px;color:var(--gy);margin-top:8px}
+.case{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:22px;border-radius:26px;overflow:hidden;background:var(--nv);color:#fff}
+.case .l{padding:36px}
+.case .r{padding:36px;background:rgba(217,184,119,.1);display:flex;flex-direction:column;justify-content:center}
+.case .q{font-family:Poppins;font-size:18px;line-height:1.5;font-weight:500}
+.case .q:before{content:"“";display:block;font-size:64px;line-height:.6;color:var(--gl);margin-bottom:10px}
+.case .kv{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;margin-top:18px;font-size:14px}
+.case .kv span{color:#A3ADBF}
+.case .kv b{font-family:Poppins;font-weight:600}
+@media (max-width:900px){.ind,.case{grid-template-columns:1fr}.vs{grid-template-columns:1fr}.vs .c2{transform:none}.soc .stats{grid-template-columns:1fr}}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
 </head>
@@ -305,7 +351,7 @@ input[type=range]:active::-webkit-slider-thumb{box-shadow:0 0 0 10px rgba(184,14
 <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></symbol>
 <symbol id="i-coin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.2c-.5-.9-1.4-1.4-2.5-1.4-1.5 0-2.6.8-2.6 2s1.1 1.7 2.6 2.1 2.6.9 2.6 2.1-1.1 2.1-2.6 2.1c-1.2 0-2.2-.6-2.6-1.5"/><path d="M12 6v1.8M12 16.2V18"/></symbol>
 </svg>
-<header id="hdr"><div class="wrap"><img src="assets/logo_light.png" alt="Élite Inversiones & Finanzas"><nav><a href="#para-quien">Para quién</a><a href="#creditos">Créditos</a><a href="#como">Cómo funciona</a><a href="#faq">Preguntas</a><a href="#cotizador" class="hcta">Cotizar</a></nav></div></header>
+<header id="hdr"><div class="wrap"><img src="assets/logo_light.png" alt="Élite Inversiones & Finanzas"><nav><a href="#individual">Crédito individual</a><a href="#para-quien">Para quién</a><a href="#creditos">Créditos</a><a href="#como">Cómo funciona</a><a href="#faq">Preguntas</a><a href="#cotizador" class="hcta">Cotizar</a></nav></div></header>
 
 <div class="hero">
   <div class="bg" data-px="0.25"></div>
@@ -321,14 +367,14 @@ input[type=range]:active::-webkit-slider-thumb{box-shadow:0 0 0 10px rgba(184,14
     </div>
     <div class="float-wrap">
       <div class="fc f1"><div class="k">TU CRÉDITO</div><div class="amt" id="demoAmt">$15,000</div><div class="trk"><b id="demoBar" style="width:30%"></b><s id="demoThumb" style="left:30%"></s></div><div class="pills" id="demoPills"><span>6 quincenas</span><span class="on">8 quincenas</span><span>10 quincenas</span><span>12 quincenas</span></div></div>
-      <div class="fc f2"><div class="st"><div class="dot"><svg class="ic" style="width:20px;height:20px"><use href="#i-check"/></svg></div><div><h4>Solicitud recibida</h4><p>Revisión individual de tu caso</p></div></div></div>
+      <div class="fc f2"><div class="st"><div class="dot"><svg class="ic" style="width:20px;height:20px"><use href="#i-check"/></svg></div><div><h4>Crédito individual</h4><p>Directo contigo, sin grupos</p></div></div></div>
       <div class="fc f3"><div class="st"><div class="dot" style="background:rgba(217,184,119,.2);color:var(--gl)"><svg class="ic" style="width:20px;height:20px"><use href="#i-chat"/></svg></div><div><h4>Te contactamos</h4><p>Por WhatsApp, con las opciones disponibles</p></div></div></div>
     </div>
   </div>
   <div class="scroll-cue"></div>
 </div>
 
-<div class="marq"><div class="t"><span>Necesidades personales</span><span>Emprendedores</span><span>Compra de inventario</span><span>Crecimiento de negocios</span><span>Revisión individual</span><span>Desde $1,000</span><span>Necesidades personales</span><span>Emprendedores</span><span>Compra de inventario</span><span>Crecimiento de negocios</span><span>Revisión individual</span><span>Desde $1,000</span><span>Necesidades personales</span><span>Emprendedores</span><span>Compra de inventario</span><span>Crecimiento de negocios</span><span>Revisión individual</span><span>Desde $1,000</span><span>Necesidades personales</span><span>Emprendedores</span><span>Compra de inventario</span><span>Crecimiento de negocios</span><span>Revisión individual</span><span>Desde $1,000</span></div></div>
+<div class="marq"><div class="t"><span>Necesidades personales</span><span>Emprendedores</span><span>Compra de inventario</span><span>Crecimiento de negocios</span><span>Crédito individual, sin grupos</span><span>Revisión individual</span><span>Impulso a pymes</span><span>Desde $1,000</span><span>Necesidades personales</span><span>Emprendedores</span><span>Compra de inventario</span><span>Crecimiento de negocios</span><span>Crédito individual, sin grupos</span><span>Revisión individual</span><span>Impulso a pymes</span><span>Desde $1,000</span><span>Necesidades personales</span><span>Emprendedores</span><span>Compra de inventario</span><span>Crecimiento de negocios</span><span>Crédito individual, sin grupos</span><span>Revisión individual</span><span>Impulso a pymes</span><span>Desde $1,000</span><span>Necesidades personales</span><span>Emprendedores</span><span>Compra de inventario</span><span>Crecimiento de negocios</span><span>Crédito individual, sin grupos</span><span>Revisión individual</span><span>Impulso a pymes</span><span>Desde $1,000</span></div></div>
 
 <section id="para-quien">
   <div class="wrap">
@@ -338,6 +384,33 @@ input[type=range]:active::-webkit-slider-thumb{box-shadow:0 0 0 10px rgba(184,14
       <div class="card pq rv"><span class="num">01</span><div class="icb"><svg class="ic" style="width:26px;height:26px"><use href="#i-user"/></svg></div><h3>Necesidades personales</h3><p>Para resolver lo que hoy necesitas tú o tu familia.</p></div>
       <div class="card pq rv d1"><span class="num">02</span><div class="icb"><svg class="ic" style="width:26px;height:26px"><use href="#i-bulb"/></svg></div><h3>Emprendedores</h3><p>Para arrancar o impulsar ese proyecto que tienes en mente.</p></div>
       <div class="card pq rv d2"><span class="num">03</span><div class="icb"><svg class="ic" style="width:26px;height:26px"><use href="#i-store"/></svg></div><h3>Negocios</h3><p>Para comprar inventario o hacer crecer tu negocio.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="individual">
+  <div class="wrap ind">
+    <div>
+      <div class="eb rv">Crédito individual</div>
+      <h2 class="rv d1">Tu crédito es <span class="g">solo tuyo.</span></h2>
+      <p class="lead rv d2" style="margin-top:14px">Aquí no hay grupos ni créditos solidarios. El crédito es directo contigo, de forma individual: tu puntualidad cuenta para ti y no dependes de que otros paguen.</p>
+      <div class="pts">
+        <div class="pt rv"><div class="icb"><svg class="ic" style="width:24px;height:24px"><use href="#i-user"/></svg></div><div><h4>Directo contigo</h4><p>Tu crédito, tus condiciones y tu trato son individuales.</p></div></div>
+        <div class="pt rv d1"><div class="icb"><svg class="ic" style="width:24px;height:24px"><use href="#i-shield"/></svg></div><div><h4>Tu historial depende de ti</h4><p>No respondes por los pagos de nadie más, ni el atraso de otra persona te afecta.</p></div></div>
+        <div class="pt rv d2"><div class="icb"><svg class="ic" style="width:24px;height:24px"><use href="#i-users"/></svg></div><div><h4>Aval solo si lo necesitas</h4><p>En montos menores se solicita un aval cuando no cuentas con una garantía sobre un bien. Aun así, el crédito sigue siendo tuyo.</p></div></div>
+      </div>
+    </div>
+    <div class="vs rv d1">
+      <div class="c c1">
+        <div class="tag">CRÉDITO GRUPAL</div><h3>En grupo</h3>
+        <div class="net"><svg viewBox="0 0 200 110"><g stroke="#C9C4BA" stroke-width="1.5"><line x1="40" y1="30" x2="100" y2="55"/><line x1="160" y1="30" x2="100" y2="55"/><line x1="40" y1="85" x2="100" y2="55"/><line x1="160" y1="85" x2="100" y2="55"/><line x1="40" y1="30" x2="40" y2="85"/><line x1="160" y1="30" x2="160" y2="85"/></g><g fill="#B8B3A8"><circle cx="40" cy="30" r="11"/><circle cx="160" cy="30" r="11"/><circle cx="40" cy="85" r="11"/><circle cx="100" cy="55" r="13"/></g><circle class="bad" cx="160" cy="85" r="11" fill="#C9705F"/></svg></div>
+        <ul><li><svg><use href="#i-dots"/></svg>Respondes por los pagos de los demás.</li><li><svg><use href="#i-dots"/></svg>El atraso de otra persona puede afectarte.</li></ul>
+      </div>
+      <div class="c c2">
+        <div class="tag">CRÉDITO ÉLITE</div><h3>Individual</h3>
+        <div class="solo"><span class="ring"></span><span class="ring r2"></span><div class="me"><svg class="ic" style="width:28px;height:28px"><use href="#i-user"/></svg></div></div>
+        <ul><li><svg><use href="#i-check"/></svg>Directo contigo, sin grupos.</li><li><svg><use href="#i-check"/></svg>Tu puntualidad cuenta solo para ti.</li><li><svg><use href="#i-check"/></svg>Revisión individual de tu caso.</li></ul>
+      </div>
     </div>
   </div>
 </section>
@@ -377,6 +450,29 @@ input[type=range]:active::-webkit-slider-thumb{box-shadow:0 0 0 10px rgba(184,14
       </div>
     </div>
     <p class="note">La aprobación de cada crédito depende de la revisión de cada caso.</p>
+  </div>
+</section>
+
+<section class="soc" id="impacto">
+  <div class="orb a" style="opacity:.12;left:auto;right:-160px;top:-100px"></div>
+  <div class="wrap" style="position:relative">
+    <div class="eb rv">Impulso local</div>
+    <h2 class="rv d1">Apoyamos a quienes <span class="g">mueven la región.</span></h2>
+    <p class="lead rv d2" style="margin-top:14px">Pequeños y medianos negocios que necesitan inventario, equipamiento o crecer; emprendedores con nuevas ideas y proyectos productivos; personas y familias con necesidades específicas. Detrás de cada crédito hay un proyecto que avanza.</p>
+    <div class="stats">
+      <div class="st rv"><div class="n"><span class="cnt" data-to="329">0</span></div><p>Créditos otorgados de 2023 a 2026.</p></div>
+      <div class="st rv d1"><div class="n">2023<span>–</span>2026</div><p>Trayectoria otorgando créditos en la región.</p></div>
+      <div class="st rv d2"><div class="n">Xalapa<span>.</span></div><p>Atención local para personas, emprendedores y negocios.</p></div>
+    </div>
+    <div class="case rv">
+      <div class="l">
+        <div class="eb" style="color:var(--gl)">Caso de éxito</div>
+        <h3 style="font-family:Poppins;font-size:24px;font-weight:600;margin-top:10px">Un crédito que impulsó una carrera.</h3>
+        <p style="color:#B7BFCE;margin-top:10px;font-size:15px">Una maestra necesitaba dinero para su título universitario y trámites pendientes.</p>
+        <div class="kv"><span>Monto</span><b>$15,000</b><span>Destino</span><b>Traslados a CDMX y liberación de título universitario</b><span>Resultado</span><b>La ascendieron y hoy es directora de una escuela primaria</b></div>
+      </div>
+      <div class="r"><div class="q">Pude arreglar mis papeles de una manera rápida y tener mi título universitario en seguida, esto hizo que en poco tiempo me ascendieran a directora de la escuela en la que comencé a laborar.</div><div style="color:#A3ADBF;font-size:13px;margin-top:14px">— Cliente Élite</div></div>
+    </div>
   </div>
 </section>
 
@@ -523,6 +619,8 @@ input[type=range]:active::-webkit-slider-thumb{box-shadow:0 0 0 10px rgba(184,14
       <details class="rv"><summary>¿Cuánto puedo solicitar?<svg><use href="#i-plus"/></svg></summary><p>Desde <span class="jmin">$1,000</span> hasta <span class="jmax">$500,000</span>. Los créditos de hasta <span class="jlim">$20,000</span> son de menor monto; arriba de esa cantidad se consideran montos mayores.</p></details>
       <details class="rv d1"><summary>¿Qué plazos manejan?<svg><use href="#i-plus"/></svg></summary><p>Para créditos de menor monto, 6, 8, 10 o 12 quincenas con pagos quincenales de capital e intereses. Para montos mayores, el plazo se revisa en cada caso, con opción de pagar intereses durante el plazo y el capital al vencimiento, hasta 12 meses.</p></details>
       <details class="rv"><summary>¿Necesito aval o garantía?<svg><use href="#i-plus"/></svg></summary><p>En créditos de menor monto se solicita un aval cuando no cuentas con una garantía sobre un bien. En montos mayores se revisa la garantía que puedes ofrecer, como la factura de un vehículo o la documentación de un inmueble.</p></details>
+      <details class="rv"><summary>¿Es un crédito grupal?<svg><use href="#i-plus"/></svg></summary><p>No. Todos nuestros créditos son individuales y directos contigo. No formas parte de un grupo ni respondes por los pagos de otras personas.</p></details>
+      <details class="rv d1"><summary>¿Necesito tener un negocio para solicitar?<svg><use href="#i-plus"/></svg></summary><p>No. Ofrecemos financiamiento para necesidades personales, emprendedores y negocios.</p></details>
       <details class="rv d1"><summary>¿Puedo abonar a capital antes?<svg><use href="#i-plus"/></svg></summary><p>Sí. Los abonos anticipados a capital son opcionales y pueden reducir los intereses posteriores.</p></details>
       <details class="rv"><summary>¿Qué información me van a pedir?<svg><use href="#i-plus"/></svg></summary><p>Tus datos, el monto y plazo que buscas, el uso que darás al crédito, tus antecedentes crediticios, tus ingresos y gastos aproximados, la garantía o aval y una referencia personal, comercial o bancaria.</p></details>
       <details class="rv d1"><summary>¿Qué pasa después de enviar mi solicitud?<svg><use href="#i-plus"/></svg></summary><p>El equipo revisa tu solicitud y te contacta por WhatsApp para explicarte las opciones disponibles. La aprobación depende de la revisión de cada caso.</p></details>
@@ -653,6 +751,8 @@ document.querySelectorAll('.jmax').forEach(e => e.textContent = fmt(CONFIG.MONTO
 document.querySelectorAll('.jlim').forEach(e => e.textContent = fmt(CONFIG.LIMITE_AVAL));
 const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), { threshold: .15 });
 document.querySelectorAll('.rv,#meter,#how').forEach(e => io.observe(e));
+const cio = new IntersectionObserver(es => es.forEach(x => { if (!x.isIntersecting) return; const el = x.target, to = +el.dataset.to, t0 = performance.now(); (function f(t) { const k = Math.min(1, (t - t0) / 1600); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(f); })(t0); cio.unobserve(el); }), { threshold: .5 });
+document.querySelectorAll('.cnt').forEach(e => cio.observe(e));
 const hdr = $('hdr'), pxs = [...document.querySelectorAll('[data-px]')];
 let tick = false;
 function onScroll() {
